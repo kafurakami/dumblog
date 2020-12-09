@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="content-section">
+  <div class="media">
+  	{% if user.profile.profile_pic %}
+    	<img class="rounded-circle account-img" src="{{ user.profile.profile_pic.url }}">
+    {% else %}
+    <img class="rounded-circle account-img" src="{% static 'blog/images/temp.jpg' %}">
+    {% endif %}
+    <div class="media-body">
+      <h3 class="account-heading">{{ user.first_name }} {{user.last_name }}</h3>
+      Username : {{ user.username }}<br>
+      Email : {{ user.email }}<br><br>
+      
+    </div>
+  </div>
+  <strong>Bio</strong><br>
+  <p class="text-secondary">{{ user.profile.bio }}</p>
+</div>
+{% endblock %}

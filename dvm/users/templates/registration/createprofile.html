@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div class = 'form-group'>
+	<h1>Create Profile!</h1>
+	<form method = 'POST' enctype="multipart/form-data">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button class = 'btn btn-secondary'>Create!</button>
+	</form>
+</div>
+
+<script>
+	var name = "{{user.id}}"; //have to pass user.id into the field, passing the username will not work, django associates the users pk in the dropbox//
+	document.getElementById('user').value = name;
+</script>
+
+{% endblock %}

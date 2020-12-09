@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<!--current user: {{ user.id }}!-->
+<!--post author : {{ posts.author.pk }} !--> <!--import the Posts model into views when defining the updateclassview, else this wont work!!! !-->
+{% if user.pk == post.author.pk %}
+<div class = 'form-group'>
+	<h1>Edit Your Post!</h1>
+	<form method = 'POST'>
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button class = 'btn btn-secondary'>Post</button>
+	</form>
+</div>
+{% else %}
+<h2>You aren't allowed to edit this post!</h2>
+{% endif %}
+
+
+{% endblock %}

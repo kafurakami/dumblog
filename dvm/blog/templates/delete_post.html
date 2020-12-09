@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+{% if user.is_authenticated %}
+{% if user.pk == post.author.pk %}
+<div class = 'form-group'>
+	<h1>Delete This Post...</h1>
+	<form method = 'POST'>
+		{% csrf_token %}
+		{{ form.as_p }}
+		<strong>Are You Sure??</strong>
+		<button class = 'btn btn-secondary'>Click Here to Delete!</button>
+	</form>
+</div>
+{% else %}
+<strong>You Aren't allowed to delete this post!!</strong>
+{% endif %}
+{% else %}
+<h2>This page is only for members. Please login to access this page.</h2>
+{% endif %}
+
+{% endblock %}

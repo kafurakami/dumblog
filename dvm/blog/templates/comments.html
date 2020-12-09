@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<div class = 'form-group'>
+	<h1>Add A Comment!!</h1>
+	<form method = 'POST'><!-- enctype allows form to collect images !-->
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button class = 'btn btn-secondary'>Post Comment!</button>
+	</form>
+</div>
+<script>
+	var name = "{{user.first_name}} {{user.last_name}}";
+	document.getElementById('user').value = name;
+</script>
+
+{% endblock %}

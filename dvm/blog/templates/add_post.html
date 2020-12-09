@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<div class = 'form-group'>
+	<h1>Make A New Post!!</h1>
+	<form method = 'POST' enctype = "multipart/form-data"><!-- enctype allows form to collect images !-->
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button class = 'btn btn-secondary'>Post</button>
+	</form>
+	<script>
+	var name = "{{user.id}}";
+	document.getElementById('user').value = name;
+</script>
+</div>
+
+{% endblock %}

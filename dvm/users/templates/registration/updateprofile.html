@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<div class = 'form-group'>
+	<h1>Update Profile Page!</h1>
+	<form method = 'POST' enctype="multipart/form-data">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button class = 'btn btn-secondary'>Update Profile</button>
+	</form>
+</div>
+
+{% endblock %}

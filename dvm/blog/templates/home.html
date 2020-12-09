@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+	{% for post in object_list %} <!-- iterating through the key value pairs of the posts dictionary, passed into the template using context in the views.py file !-->
+		<article class="media content-section">
+		  <div class="media-body">
+		    <div class="article-metadata">
+		      <a class="mr-2" href="#">{{ post.author }}</a> <!-- note - first {} is generic syntax (like used in block content and all), and the second {} is used to access the dictionary !-->
+		      <small class="text-muted">{{ post.date }}</small>
+		        {% if user.is_authenticated %}
+		      		<small><a href='{% url "updatepage" post.pk %}'>Edit</a></small>
+		      	{% else %}
+		      		<a></a>
+		    	{% endif %}
+		    	{% if user.is_authenticated %}
+		      		<small><a href='{% url "deletepage" post.pk %}'>Delete</a></small>
+		      	{% else %}
+		      		<a></a>
+		    	{% endif %}
+		    </div>
+
+		    <h2><a class="article-title" href="{% url 'detail' post.pk %}">{{ post.title }}</a></h2>
+		    <p class="article-content">{{ post.body }}</p>
+		  </div>
+		</article>
+	{% endfor %}
+{% endblock %}
