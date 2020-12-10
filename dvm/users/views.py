@@ -34,10 +34,13 @@ class userregisterview(CreateView):
 	template_name = 'registration/register.html'
 	success_url = reverse_lazy('login')
 
-class usereditview(CreateView):
+class usereditview(UpdateView):
 	form_class = UserEditForm
 	template_name = 'registration/edit_settings.html'
-	success_url = reverse_lazy('home')
+	success_url = reverse_lazy('homepage')
+
+	def get_object(self):
+		return self.request.user
 
 class passchangeview(PasswordChangeView):
 	form_class = PasswordChangeForm
